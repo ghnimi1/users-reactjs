@@ -1,24 +1,35 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Axios from 'axios';
 
 function App() {
+  const [users, setUsers] = useState([])
+  const [comments, setComments] = useState([])
+  const [posts, setPosts] = useState([])
+         console.log('users',users)
+         console.log('Posts',posts)
+         console.log('comments',comments)
+  const getUsers = () => {
+    Axios.get('https://jsonplaceholder.typicode.com/users')
+    .then(response=>setUsers(response.data))
+  }
+  const getPosts = () => {
+    Axios.get('https://jsonplaceholder.typicode.com/posts')
+    .then(response=>setPosts(response.data))
+  }
+  const getComments = (id) =>{
+    Axios.get(`https://jsonplaceholder.typicode.com/posts/${id}/comments`)
+    .then(response=>setComments(response.data))
+  }
+useEffect(()=>{
+    getUsers()
+    getPosts()
+    getComments()
+},[])
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+       wel
     </div>
   );
 }
