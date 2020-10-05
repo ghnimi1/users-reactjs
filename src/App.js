@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Axios from 'axios';
 import Users from './components/Users/Users';
@@ -27,9 +26,12 @@ function App() {
     getPosts()
   }, [])
   return (
-    <div className='container'>
+    <div style={{backgroundColor:'#F2F3F5'}}>
+      <div className='container'>
       <Users users={users} posts={posts} deletePost={deletePost}/>
     </div>
+    </div>
+    
   );
 }
 

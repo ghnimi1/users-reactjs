@@ -1,5 +1,4 @@
 import React from 'react';
-import Comments from '../Comments/Comments';
 import PostItem from './PostItem';
 
 function Posts({posts,id,deletePost}) {
@@ -9,8 +8,8 @@ function Posts({posts,id,deletePost}) {
         <div>
             {renderPost.map(post=>{
                 return(
-                    <div className='posts'>
-                    <PostItem post={post} key={post.id} deletePost={deletePost}/>
+                    <div className='posts' key={post.id} >
+                    <PostItem post={post} deletePost={deletePost}/>
                     </div>
                     
                 )

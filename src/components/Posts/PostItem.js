@@ -19,12 +19,15 @@ function PostItem({ post,deletePost }) {
     return (
         <>
             <h6 onClick={()=>openPost()}>
-                {post.title}
+               {document.title = `${post.title}`}
             </h6>
             {openpost ? <><p>{post.body}</p>
-            <button className='btn btn-danger' onClick={()=>deletePost(post.id)} ><FontAwesomeIcon icon={faTrash} color='#fff'/> DELETE</button>
+            <button className='btn btn-danger' onClick={()=>deletePost(post.id)} >
+                <FontAwesomeIcon icon={faTrash} color='#fff'/> DELETE</button> 
+             
             <h5 style={{textAlign:'center'}} onClick={()=>openComment()}>Comments</h5> 
-            
+              
+
             </> : null}
             <div>
                {open ?  <Comments id={post.id} /> : null}

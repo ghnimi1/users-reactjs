@@ -15,7 +15,7 @@ function Comments({id}) {
             {comments.map(comment=>{
                 return(
                     <>
-                    <p style={{width:'70%',textAlign:'center',marginLeft:'30px',backgroundColor:'#F6F9F9'}}>{comment.body}</p>
+                    <p className='comment'>{comment.body}</p>
                     </>
                 )
             })}
