@@ -11,15 +11,20 @@ function App() {
     Axios.get('https://jsonplaceholder.typicode.com/users')
       .then(response => setUsers(response.data))
   }
+  
   const getPosts = () => {
     Axios.get('https://jsonplaceholder.typicode.com/posts')
       .then(response => setPosts(response.data))
   }
 
+  /* const AddPost = (post) => {
+    post.id = Math.random()
+    setPosts(posts.push(post))
+  }
+ */
   const deletePost = (id) => {
     setPosts(posts.filter(post=>post.id!==id))
 }
-
   
   useEffect(() => {
     getUsers()
@@ -28,7 +33,7 @@ function App() {
   return (
     <div style={{backgroundColor:'#F2F3F5'}}>
       <div className='container'>
-      <Users users={users} posts={posts} deletePost={deletePost}/>
+      <Users users={users} posts={posts} deletePost={deletePost} />
     </div>
     </div>
     

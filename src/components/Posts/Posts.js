@@ -1,7 +1,7 @@
 import React from 'react';
 import PostItem from './PostItem';
 
-function Posts({posts,id,deletePost}) {
+function Posts({posts,id,deletePost,name}) {
     
     const renderPost = posts.filter(post=>post.userId ==id)
     return (
@@ -9,7 +9,7 @@ function Posts({posts,id,deletePost}) {
             {renderPost.map(post=>{
                 return(
                     <div className='posts' key={post.id} >
-                    <PostItem post={post} deletePost={deletePost}/>
+                    <PostItem post={post} deletePost={deletePost}name={name}/>
                     </div>
                     
                 )

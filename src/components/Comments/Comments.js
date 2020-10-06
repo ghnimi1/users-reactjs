@@ -1,12 +1,14 @@
 import Axios from 'axios';
 import React, { useEffect, useState } from 'react';
 
-function Comments({id}) {
+function Comments({id,name}) {
     const [comments, setComments] = useState([])
     const getComments = (id) => {
         Axios.get(`https://jsonplaceholder.typicode.com/posts/${id}/comments`)
           .then(response => setComments(response.data))
       }
+
+
       useEffect(()=>{
           getComments(id)
       })
@@ -14,9 +16,10 @@ function Comments({id}) {
         <div>
             {comments.map(comment=>{
                 return(
-                    <>
-                    <p className='comment'>{comment.body}</p>
-                    </>
+                    <div className='comment'>
+                    <h4>{name}</h4>
+                    <p >{comment.body}</p>
+                    </div>
                 )
             })}
         </div>
