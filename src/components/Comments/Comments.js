@@ -1,16 +1,17 @@
 import Axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { getComments } from '../../services/auth';
 
 function Comments({id,name}) {
     const [comments, setComments] = useState([])
-    const getComments = (id) => {
-        Axios.get(`https://jsonplaceholder.typicode.com/posts/${id}/comments`)
-          .then(response => setComments(response.data))
+    const getCommentsData = async (id) => {
+        const res = await getComments(id)
+        setComments(res.data)
       }
 
 
       useEffect(()=>{
-          getComments(id)
+          getCommentsData(id)
       })
     return (
         <div>

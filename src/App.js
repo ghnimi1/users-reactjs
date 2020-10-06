@@ -1,20 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
-import Axios from 'axios';
 import Users from './components/Users/Users';
+import { getUsers,getPosts } from './services/auth';
 
 function App() {
   const [users, setUsers] = useState([])
   const [posts, setPosts] = useState([])
 
-  const getUsers = () => {
-    Axios.get('https://jsonplaceholder.typicode.com/users')
-      .then(response => setUsers(response.data))
+  const getUsersData = async () => {
+    const res = await getUsers()
+    setUsers(res.data)
   }
-  
-  const getPosts = () => {
-    Axios.get('https://jsonplaceholder.typicode.com/posts')
-      .then(response => setPosts(response.data))
+
+  const getPostsData = async () => {
+    const res = await getPosts()
+    setPosts(res.data)
   }
 
   /* const AddPost = (post) => {
@@ -27,8 +27,8 @@ function App() {
 }
   
   useEffect(() => {
-    getUsers()
-    getPosts()
+    getUsersData()
+    getPostsData()
   }, [])
   return (
     <div style={{backgroundColor:'#F2F3F5'}}>
