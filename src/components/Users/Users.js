@@ -3,7 +3,7 @@ import User from '../Users/User';
 
 function Users({ users, posts, deletePost, AddPost }) {
   
-    const renderUsers = users.map(user => {
+    const renderUsers =users.map(user => {
      
         return (
             <div className='users' key={user.id}>

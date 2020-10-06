@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
+import SearchUser from './components/SearchBar/SearchUser';
 import Users from './components/Users/Users';
 import { getUsers,getPosts } from './services/auth';
 
@@ -25,14 +26,20 @@ function App() {
   const deletePost = (id) => {
     setPosts(posts.filter(post=>post.id!==id))
 }
-  
+
   useEffect(() => {
     getUsersData()
     getPostsData()
   }, [])
+
+  const search = (term)=>{
+    if (term ==='' ) return
+    setUsers(users.filter(user=>user.name.toLowerCase()==term.toLowerCase()))
+  }
   return (
     <div style={{backgroundColor:'#F2F3F5'}}>
       <div className='container'>
+      <SearchUser search={search}/>
       <Users users={users} posts={posts} deletePost={deletePost} />
     </div>
     </div>
